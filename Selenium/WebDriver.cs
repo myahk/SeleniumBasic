@@ -58,6 +58,7 @@ namespace Selenium {
         internal string Profile = null;
         internal string Binary = null;
         internal bool Persistant = false;
+        internal List AddExcludedArguments = new List();
 
         private Timeouts timeouts = new Timeouts();
         private IDriverService _service = null;
@@ -186,6 +187,15 @@ namespace Selenium {
             if (!File.Exists(path))
                 throw new Errors.FileNotFoundError(path);
             this.Binary = path;
+        }
+        
+        /// <summary>
+        /// Add an argument to be appended to the command line to launch the browser.
+        /// </summary>
+        /// <param name="AddExcludedArgument">AddExcludedArgument</param>
+        public void AddExcludedArgument(string AddExcludedargument)
+        {
+            AddExcludedArguments.Add(AddExcludedargument);
         }
 
         #endregion
